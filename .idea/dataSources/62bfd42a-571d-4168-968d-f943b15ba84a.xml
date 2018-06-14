@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="mivhanet_db.db">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <table id="3" parent="2" name="Choice"/>
+    <table id="4" parent="2" name="Comment"/>
+    <table id="5" parent="2" name="Course"/>
+    <table id="6" parent="2" name="CourseDetails"/>
+    <table id="7" parent="2" name="CourseManager"/>
+    <table id="8" parent="2" name="Exam"/>
+    <table id="9" parent="2" name="ExamsQuestions"/>
+    <table id="10" parent="2" name="Grade"/>
+    <table id="11" parent="2" name="Lecturer"/>
+    <table id="12" parent="2" name="Lecturer_Course"/>
+    <table id="13" parent="2" name="Question"/>
+    <table id="14" parent="2" name="QuestionInExam"/>
+    <table id="15" parent="2" name="Secretary"/>
+    <table id="16" parent="2" name="Student"/>
+    <table id="17" parent="2" name="StudentsInCourses"/>
+    <table id="18" parent="2" name="Tutor"/>
+    <table id="19" parent="2" name="sqlite_master"/>
+    <table id="20" parent="2" name="tutor_course"/>
+    <column id="21" parent="3" name="body">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="3" name="content">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="3" name="isTrue">
+      <Position>2</Position>
+      <DataType>NUMERIC|0</DataType>
+    </column>
+    <index id="24" parent="3" name="sqlite_autoindex_Choice_1">
+      <ColNames>body
+content</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="3">
+      <ColNames>body
+content</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Choice_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="26" parent="3">
+      <ColNames>body</ColNames>
+      <RefTableName>Question</RefTableName>
+      <RefColNames>body</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="27" parent="4" name="questionBody">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="4" name="commentBody">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="29" parent="4" name="sqlite_autoindex_Comment_1">
+      <ColNames>questionBody
+commentBody</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="30" parent="4">
+      <ColNames>questionBody
+commentBody</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Comment_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="31" parent="4">
+      <ColNames>questionBody</ColNames>
+      <RefTableName>Question</RefTableName>
+      <RefColNames>body</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="32" parent="5" name="courseID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="5" name="yearr">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="5" name="season">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="5" name="syllabus">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="36" parent="5" name="sqlite_autoindex_Course_1">
+      <ColNames>yearr
+courseID
+season</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="37" parent="5">
+      <ColNames>yearr
+courseID
+season</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Course_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="38" parent="5">
+      <ColNames>courseID</ColNames>
+      <RefTableName>CourseDetails</RefTableName>
+      <RefColNames>courseID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="39" parent="6" name="courseID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="6" name="name">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="41" parent="6" name="sqlite_autoindex_CourseDetails_1">
+      <ColNames>courseID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="42" parent="6">
+      <ColNames>courseID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_CourseDetails_1</UnderlyingIndexName>
+    </key>
+    <column id="43" parent="7" name="ID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="7" name="userName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="7" name="firstName">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="7" name="lastName">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="7" name="address">
+      <Position>4</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="7" name="email">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="7" name="phoneNumber">
+      <Position>6</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="50" parent="7" name="sqlite_autoindex_CourseManager_1">
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="7">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_CourseManager_1</UnderlyingIndexName>
+    </key>
+    <column id="52" parent="8" name="courseID">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="8" name="datee">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="8" name="semester">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="8" name="moed">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="8" name="duration">
+      <Position>4</Position>
+      <DataType>REAL|0</DataType>
+    </column>
+    <key id="57" parent="8">
+      <ColNames>courseID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="58" parent="9" name="courseID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="9" name="datee">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="9" name="body">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="61" parent="9" name="sqlite_autoindex_ExamsQuestions_1">
+      <ColNames>courseID
+datee
+body</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="62" parent="9">
+      <ColNames>courseID
+datee
+body</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_ExamsQuestions_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="63" parent="9">
+      <ColNames>courseID</ColNames>
+      <RefTableName>CourseDetails</RefTableName>
+      <RefColNames>courseID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="64" parent="10" name="studentID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="10" name="courseID">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="10" name="dateee">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="10" name="valuee">
+      <Position>3</Position>
+      <DataType>REAL|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="68" parent="10" name="sqlite_autoindex_Grade_1">
+      <ColNames>studentID
+courseID
+dateee</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="69" parent="10">
+      <ColNames>studentID
+courseID
+dateee</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Grade_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="70" parent="10">
+      <ColNames>studentID</ColNames>
+      <RefTableName>Student</RefTableName>
+      <RefColNames>ID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="71" parent="10">
+      <ColNames>courseID</ColNames>
+      <RefTableName>Exam</RefTableName>
+      <RefColNames>courseID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="72" parent="11" name="ID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="11" name="userName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="11" name="firstName">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="11" name="lastName">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="76" parent="11" name="address">
+      <Position>4</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="77" parent="11" name="email">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="11" name="phoneNumber">
+      <Position>6</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="79" parent="11" name="sqlite_autoindex_Lecturer_1">
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="80" parent="11">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Lecturer_1</UnderlyingIndexName>
+    </key>
+    <column id="81" parent="12" name="courseID">
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="82" parent="12" name="yearr">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="83" parent="12" name="season">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="84" parent="12" name="LecturerID">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="85" parent="12" name="sqlite_autoindex_Lecturer_Course_1">
+      <ColNames>LecturerID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="86" parent="12">
+      <ColNames>LecturerID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Lecturer_Course_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="87" parent="12" name="Lecturer_Course_Course_courseID_yearr_season_fk">
+      <ColNames>courseID
+yearr
+season</ColNames>
+      <RefTableName>Course</RefTableName>
+      <RefColNames>courseID
+yearr
+season</RefColNames>
+    </foreign-key>
+    <foreign-key id="88" parent="12" name="Lecturer_Course_Lecturer_ID_fk">
+      <ColNames>LecturerID</ColNames>
+      <RefTableName>Lecturer</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="89" parent="13" name="body">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="90" parent="13" name="score">
+      <Position>1</Position>
+      <DataType>REAL|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="91" parent="13" name="difficultyLevel">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="92" parent="13" name="estimatedTime">
+      <Position>3</Position>
+      <DataType>REAL|0</DataType>
+    </column>
+    <index id="93" parent="13" name="sqlite_autoindex_Question_1">
+      <ColNames>body</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="94" parent="13">
+      <ColNames>body</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Question_1</UnderlyingIndexName>
+    </key>
+    <column id="95" parent="14" name="body">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="96" parent="14" name="answeredRight">
+      <Position>1</Position>
+      <DataType>NUMERIC|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="97" parent="14" name="studentID">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="98" parent="14" name="courseID">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="99" parent="14" name="datee">
+      <Position>4</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="100" parent="14" name="sqlite_autoindex_QuestionInExam_1">
+      <ColNames>body</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="101" parent="14">
+      <ColNames>body</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_QuestionInExam_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="102" parent="14">
+      <ColNames>body</ColNames>
+      <RefTableName>Question</RefTableName>
+      <RefColNames>body</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="103" parent="14">
+      <ColNames>studentID</ColNames>
+      <RefTableName>Student</RefTableName>
+      <RefColNames>ID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="104" parent="14">
+      <ColNames>courseID</ColNames>
+      <RefTableName>CourseDetails</RefTableName>
+      <RefColNames>courseID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="105" parent="15" name="ID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="106" parent="15" name="userName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="15" name="firstName">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="108" parent="15" name="lastName">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="109" parent="15" name="address">
+      <Position>4</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="110" parent="15" name="email">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="111" parent="15" name="phoneNumber">
+      <Position>6</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="112" parent="16" name="ID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="113" parent="16" name="firstName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="114" parent="16" name="lastName">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="115" parent="16" name="sqlite_autoindex_Student_1">
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="116" parent="16">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Student_1</UnderlyingIndexName>
+    </key>
+    <column id="117" parent="17" name="studentID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="118" parent="17" name="courseID">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="119" parent="17" name="yearr">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="120" parent="17" name="season">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="121" parent="17" name="sqlite_autoindex_StudentsInCourses_1">
+      <ColNames>studentID
+courseID
+yearr
+season</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="122" parent="17">
+      <ColNames>studentID
+courseID
+yearr
+season</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_StudentsInCourses_1</UnderlyingIndexName>
+    </key>
+    <column id="123" parent="18" name="ID">
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="124" parent="18" name="userName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="125" parent="18" name="firstName">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="126" parent="18" name="lastName">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="127" parent="18" name="address">
+      <Position>4</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="128" parent="18" name="email">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="129" parent="18" name="phoneNumber">
+      <Position>6</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="130" parent="18" name="sqlite_autoindex_Tutor_1">
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="131" parent="18">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Tutor_1</UnderlyingIndexName>
+    </key>
+    <column id="132" parent="19" name="type">
+      <DataType>text|0</DataType>
+    </column>
+    <column id="133" parent="19" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="134" parent="19" name="tbl_name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="135" parent="19" name="rootpage">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="136" parent="19" name="sql">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="137" parent="20" name="courseID">
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="138" parent="20" name="Yearr">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="139" parent="20" name="season">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="140" parent="20" name="tutorID">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="141" parent="20" name="sqlite_autoindex_tutor_course_1">
+      <ColNames>courseID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="142" parent="20">
+      <ColNames>courseID</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_tutor_course_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="143" parent="20" name="tutor_course_Course_courseID_yearr_season_fk">
+      <ColNames>courseID
+Yearr
+season</ColNames>
+      <RefTableName>Course</RefTableName>
+      <RefColNames>courseID
+yearr
+season</RefColNames>
+    </foreign-key>
+    <foreign-key id="144" parent="20" name="tutor_course_Tutor_ID_fk">
+      <ColNames>tutorID</ColNames>
+      <RefTableName>Tutor</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
