@@ -29,4 +29,15 @@ public class Exam {
   public QuestionInExam getQuestionInExam(Student s){return new QuestionInExam("",0,Difficulty.ZERO,0,true);}
   public ArrayList<Question> getQuestions(Student student){return new ArrayList<Question>();}
 
+    public Date getDate() {
+        return date;
+    }
+
+  public Moed getMoed() {
+    return moed;
+  }
+
+  public float getDuration() {
+    return duration;
+  }
 }

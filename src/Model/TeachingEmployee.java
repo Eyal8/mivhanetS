@@ -7,7 +7,12 @@ import java.util.Date;
  * Created by eyal8_000 on 14/04/2018.
  */
 public abstract class TeachingEmployee extends User {
+
   protected ArrayList<Course> courses;
+
+  public TeachingEmployee(String fn, String ln, String id) {
+    super(fn, ln, id);
+  }
 
   public ArrayList<Course> GetCurrentSemesterCourses (String year, SemesterType season){ return new ArrayList<Course>();}
   public ArrayList<Student> GetStudentsOfCourse(String courseID, SemesterType season, String year){return new ArrayList<Student>();}

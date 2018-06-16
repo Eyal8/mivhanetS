@@ -9,6 +9,11 @@ import java.util.HashMap;
  */
 public class Lecturer extends TeachingEmployee {
 
+
+  public Lecturer(String fn, String ln, String id) {
+    super(fn, ln, id);
+  }
+
   public ArrayList<Question> GetListOfQuestions(String year, String courseID, SemesterType season){return new ArrayList<Question>();}
   public void ChooseQuestionsByLecturer(String courseID, Date date, HashMap<String, Double> questionsToAdd, SemesterType season) {}
   public void SetDuraionOfExam(String courseID,  SemesterType season, Date date){}
