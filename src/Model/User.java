@@ -11,4 +11,16 @@ public abstract class User {
   protected String address;
   protected String phoneNumber;
   protected String email;
+
+  public User(String firstName, String lastName, String ID) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.ID = ID;
+  }
+
+  public User(){};
+
+    public String getID() {
+        return ID;
+    }
 }

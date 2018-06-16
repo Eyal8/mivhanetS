@@ -15,5 +15,15 @@ public class Student {
   private HashMap<Exam,ArrayList<QuestionInExam>> questionsOfExams;
   private HashMap<Exam, Grade> examsOfStudents;
 
+  public Student(String ID, String firstName, String lastName) {
+    this.ID = ID;
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
   public double getGrade(Exam e){return examsOfStudents.get(e).getGrade();}
+
+    public String getID() {
+        return ID;
+    }
 }
