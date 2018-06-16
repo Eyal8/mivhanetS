@@ -8,7 +8,8 @@ public class Choice {
   private boolean isTrue;
   private Question q;
 
-  public Choice(String content, boolean isTrue){
+  public Choice(Question q, String content, boolean isTrue){
+    this.q = q;
     this.content=content;
     this.isTrue=isTrue;
   }

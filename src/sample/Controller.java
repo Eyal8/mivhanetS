@@ -49,7 +49,7 @@ public class Controller {
       alert.show();
     }
     Spage.setTitle("Secretery");
-    Scene scene = new Scene(root,1000,700);
+    Scene scene = new Scene(root,900,700);
     scene.getStylesheets().add(getClass().getResource("procss.css").toExternalForm());
     Spage.setScene(scene);
     Spage.initModality(Modality.APPLICATION_MODAL);
@@ -80,7 +80,7 @@ public class Controller {
       alert.show();
     }
     Lpage.setTitle("Lecturer");
-    Scene scene2 = new Scene(root2,600,400);
+    Scene scene2 = new Scene(root2,800,530);
     scene2.getStylesheets().add(getClass().getResource("procss.css").toExternalForm());
     Lpage.setScene(scene2);
     Lpage.initModality(Modality.APPLICATION_MODAL);

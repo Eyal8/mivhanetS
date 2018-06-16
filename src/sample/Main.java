@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Mivhanet");
         primaryStage.setScene(new Scene(root, 600, 200));
         primaryStage.getScene().getStylesheets().add(getClass().getResource("procss.css").toExternalForm());
         primaryStage.show();

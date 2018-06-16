@@ -9,8 +9,36 @@
   -fx-background-position: center center;
   -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
 }
-
-
+#welcome{
+  -fx-text-fill: black;
+  -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+  -fx-font-family: "Gisha";
+  -fx-wrap-text: true;
+  -fx-font-size: 26px;
+  -fx-font-weight: bold;
+  -fx-background-radius: 16.4, 15;
+  -fx-background-insets: -1.4, 0;
+  -fx-border-radius: 2;
+  -fx-border-width: 2;
+  -fx-background-size: 150 150;
+  -fx-background-position: center center;
+}
+tooltip{
+  -fx-text-fill: white;
+}
+Label{
+  -fx-text-fill: white;
+  -fx-font-family: "Gisha";
+  -fx-wrap-text: true;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-background-radius: 16.4, 15;
+  -fx-background-insets: -1.4, 0;
+  -fx-border-radius: 2;
+  -fx-border-width: 2;
+  -fx-background-size: 150 150;
+  -fx-background-position: center center;
+}
 Button
 {
   -fx-text-fill: white;

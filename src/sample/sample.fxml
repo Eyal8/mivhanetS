@@ -19,7 +19,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Hello and welcome to Mivhanet" />
+                        <Label fx:id="welcome" text="Hello and welcome to Mivhanet" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">

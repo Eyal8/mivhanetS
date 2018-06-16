@@ -1,6 +1,8 @@
 package sample;
 
+import Model.Choice;
 import Model.Database;
+import Model.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,9 +25,17 @@ import java.util.Map;
 
 
 public class LecturerController {
-  public javafx.scene.control.ComboBox chooseCourse;
+  public javafx.scene.control.ComboBox chosenCourse;
+  public javafx.scene.control.ComboBox chosenQuestion;
+  public javafx.scene.control.ComboBox chosenChoice;
+  public javafx.scene.control.TextArea changedChoiceText;
+  public javafx.scene.control.TextArea newChoiceText;
+  public javafx.scene.control.RadioButton choiceChangeRadioButton;
+  public javafx.scene.control.RadioButton newChoiceRadioButton;
   private Database db;
-  public Stage L2page;
+  private String courseID;
+  private String question;
+  private String choice;
   @FXML
   public void initialize() throws SQLException {
 
@@ -41,46 +51,93 @@ public class LecturerController {
       String course_name = value.getString("name");
       options.add(course_name + " "+course_id);
     }
-    chooseCourse.getItems().addAll(options);
+    chosenCourse.getItems().addAll(options);
     key.close();
 
-
-    L2page = new Stage();
-    L2page.setAlwaysOnTop(true);
-    L2page.setResizable(false);
-    L2page.setTitle("Lecturer");
-
-    Parent root = null;
-
-    try {
-      //change MyView.fxml to help.fxml after designed
-      root = FXMLLoader.load(getClass().getResource("Lecturer2.fxml"));
-    } catch (IOException e) {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setHeaderText("Exception!");
-      alert.show();
-    }
-    L2page.setTitle("Lecturer");
-    Scene scene = new Scene(root, 600, 400);
-    scene.getStylesheets().add(getClass().getResource("procss.css").toExternalForm());
-    L2page.setScene(scene);
-    L2page.initModality(Modality.APPLICATION_MODAL);
+    chosenQuestion.setDisable(true);
+    chosenChoice.setDisable(true);
+    changedChoiceText.setDisable(true);
+    newChoiceText.setDisable(true);
   }
 
-  public String getChosenCourse()
+  /*public String getChosenCourse()
   {
     if(chooseCourse != null)
       return chooseCourse.getValue().toString();
     return "";
-  }
-  public void getQuestions(){
-
-    L2page.show();
-  }
-  public String getCourse(){
-    if(chooseCourse != null) {
-      return chooseCourse.getValue().toString();
+  }*/
+  public void getQuestions() throws SQLException {
+    String[] course_full_name = (chosenCourse.getValue().toString()).split(" ");
+    courseID = course_full_name[course_full_name.length-1];
+    Map<Statement, ResultSet> result = db.executeSqlQuery("SELECT body FROM Question WHERE courseID = '"+courseID+"';");
+    Map.Entry<Statement,ResultSet> entry = result.entrySet().iterator().next();
+    Statement key = entry.getKey();
+    ResultSet value = entry.getValue();
+    final ObservableList options = FXCollections.observableArrayList();
+    while(value.next()){
+      String body = (value.getString("body"));
+      options.add(body);
     }
-    else return "";
+    chosenQuestion.getItems().addAll(options);
+    key.close();
+
+    chosenQuestion.setDisable(false);
+
+  }
+  public void getChoices() throws SQLException {
+    question = chosenQuestion.getValue().toString();
+    Map<Statement, ResultSet> result2 = db.executeSqlQuery("SELECT content FROM Choice WHERE body = '"+question+"';");
+    Map.Entry<Statement,ResultSet> entry2 = result2.entrySet().iterator().next();
+    Statement key2 = entry2.getKey();
+    ResultSet value2 = entry2.getValue();
+    final ObservableList options2 = FXCollections.observableArrayList();
+    while(value2.next()){
+      String content = (value2.getString("content"));
+      options2.add(content);
+    }
+    chosenChoice.getItems().addAll(options2);
+    key2.close();
+    chosenChoice.setDisable(false);
+    changedChoiceText.setDisable(false);
+    newChoiceText.setDisable(false);
+  }
+  public void saveQuestionEdit() throws SQLException {
+    db = new Database();
+    boolean isTrue = choiceChangeRadioButton.isSelected();
+    String choiceBody = chosenChoice.getValue().toString().trim();
+    String changedChoice = changedChoiceText.getText().trim();
+    db.executeUpdateQuery("UPDATE Choice SET content='"+changedChoice+"',isTrue='"+isTrue+"' WHERE content='"+choiceBody+"';");
+    chosenChoice.getItems().clear();
+    Map<Statement, ResultSet> result2 = db.executeSqlQuery("SELECT content FROM Choice WHERE body = '"+question+"';");
+    Map.Entry<Statement,ResultSet> entry2 = result2.entrySet().iterator().next();
+    Statement key2 = entry2.getKey();
+    ResultSet value2 = entry2.getValue();
+    final ObservableList options2 = FXCollections.observableArrayList();
+    while(value2.next()){
+      String content = (value2.getString("content"));
+      options2.add(content);
+    }
+    chosenChoice.getItems().addAll(options2);
+    key2.close();
+  }
+  public void createNewChoice() throws SQLException {
+    db = new Database();
+    String newChoice = newChoiceText.getText().trim();
+    boolean isTrue = newChoiceRadioButton.isSelected();
+    db.executeUpdateQuery("INSERT INTO Choice (body,content, isTrue) VALUES ('" + question + "','" + newChoice + "','" + isTrue + "');");
+    chosenChoice.getItems().clear();
+    Map<Statement, ResultSet> result2 = db.executeSqlQuery("SELECT content FROM Choice WHERE body = '" + question + "';");
+    Map.Entry<Statement, ResultSet> entry2 = result2.entrySet().iterator().next();
+    Statement key2 = entry2.getKey();
+    ResultSet value2 = entry2.getValue();
+    final ObservableList options2 = FXCollections.observableArrayList();
+    while (value2.next()) {
+      String content = (value2.getString("content"));
+      options2.add(content);
+    }
+    chosenChoice.getItems().addAll(options2);
+    key2.close();
+    Question q = new Question(question);
+    Choice c = new Choice(q, choice, isTrue);
   }
 }
