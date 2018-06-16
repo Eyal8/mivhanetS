@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
+<?import javafx.scene.control.Tooltip?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CourseManager2Controller">
    <children>
       <VBox layoutX="-5.0" layoutY="-3.0" prefHeight="400.0" prefWidth="609.0">
@@ -24,6 +25,9 @@
                      <HBox.margin>
                         <Insets top="30.0" />
                      </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Choose the syllabus's file" />
+                     </tooltip>
                   </Button>
                </children>
             </HBox>

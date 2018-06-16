@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
+<?import javafx.scene.control.Tooltip?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CourseManagerController">
    <children>
       <VBox layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
@@ -20,15 +21,18 @@
                   <Insets top="150.0" />
                </VBox.margin>
             </Label>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="chooseCourse" prefWidth="150.0">
                <VBox.margin>
                   <Insets left="200.0" />
                </VBox.margin>
             </ComboBox>
-            <Button fx:id="moveToQuestions" mnemonicParsing="false" onAction="#getSyllabusScreen" text="Get questions">
+            <Button fx:id="moveToSyllabus" mnemonicParsing="false" onAction="#getSyllabusScreen" text="Set syllabus">
                <VBox.margin>
                   <Insets left="200.0" top="50.0" />
                </VBox.margin>
+               <tooltip>
+                  <Tooltip text="Go to set the course's syllabus" />
+               </tooltip>
             </Button>
          </children>
       </VBox>

@@ -22,8 +22,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-      Secretary s = new Secretary();
-      s.AddLecturersToCourse(new ArrayList<String>(), SemesterType.Spring,"1232","1998");
+      //Secretary s = new Secretary();
+     // s.AddLecturersToCourse(new ArrayList<String>(), SemesterType.Spring,"1232","1998");
       launch(args);
     }
 }

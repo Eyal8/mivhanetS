@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import javafx.scene.control.Tooltip?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Lecturer2Controller">
    <children>
       <ComboBox layoutX="191.0" layoutY="138.0" prefWidth="150.0" fx:id="chooseQuestion"/>
@@ -15,6 +16,10 @@
             <Insets left="200.0" />
          </padding>
       </Label>
-      <Button fx:id="moveToChoices" layoutX="188.0" layoutY="200.0" mnemonicParsing="false" onAction="#getChoices" text="Get choices" />
+      <Button fx:id="moveToChoices" layoutX="188.0" layoutY="200.0" mnemonicParsing="false" onAction="#getChoices" text="Get choices">
+         <tooltip>
+            <Tooltip text="Get the choices of the question" />
+         </tooltip>
+        </Button>
    </children>
 </AnchorPane>

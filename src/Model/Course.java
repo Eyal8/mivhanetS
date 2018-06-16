@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +18,15 @@ public class Course {
   private ArrayList<Action> actions;
   private ArrayList<Error> errors;
 
+  public Course(CourseDetails cd, Semester s, ArrayList<Tutor> t, ArrayList<Lecturer> l, CourseManager cm, ArrayList<Student> students, ArrayList<Exam> exams){
+    this.courseDetails = cd;
+    this.semester = s;
+    this.tutors = t;
+    this.lecturers = l;
+    this.manager = cm;
+    this.students = students;
+    this.exams = exams;
+  }
   public void addLecturer(Lecturer lct){}
   public void addTutor(Tutor ttr){}
   public void addCourseManager(CourseManager cm){};

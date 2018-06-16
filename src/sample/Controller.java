@@ -1,13 +1,21 @@
 package sample;
 
+import Model.Database;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Map;
 
 
 import javafx.fxml.FXML;
@@ -19,9 +27,9 @@ public class Controller {
   public Stage Spage;
   public Stage Lpage;
   public Stage CMpage;
-
+  private Database db;
   @FXML
-  public void initialize(){
+  public void initialize() throws SQLException {
     Spage = new Stage();
     Spage.setAlwaysOnTop(true);
     Spage.setResizable(false);
@@ -45,6 +53,11 @@ public class Controller {
     scene.getStylesheets().add(getClass().getResource("procss.css").toExternalForm());
     Spage.setScene(scene);
     Spage.initModality(Modality.APPLICATION_MODAL);
+
+
+
+
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////
